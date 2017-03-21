@@ -6,6 +6,7 @@ function EstaLetraEnIntroducidas($letra, $letrasAcertadas,$letrasFalladas)
         $esta=false;
     else
         $esta=true;
+   
     return $esta;
 }
 
@@ -16,7 +17,8 @@ function PedirLetra( $letrasAcertadas, $letrasFalladas)
         $letra=  strtoupper($letra);
         $esta= EstaLetraEnIntroducidas($letra, $letrasAcertadas, $letrasFalladas);
     }
-    while($esta==true); 
+    while($esta==true);
+    
     return $letra;
 }
 
