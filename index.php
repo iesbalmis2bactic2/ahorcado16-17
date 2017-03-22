@@ -177,7 +177,7 @@ function Principal()
         $_SESSION['definicion'], $_SESSION['imagen'], 
         $_SESSION['palabra'], $_SESSION['acertadas'], 
         $_SESSION['falladas'], $mensajeParaUsuario);    
-}//Hola soy Juan
+}//Hola so Juan
 ?>
 
 <!DOCTYPE>
