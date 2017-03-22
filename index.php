@@ -1,179 +1,148 @@
 <?php
-function EstaLetraEnIntroducidas($letra, $letrasAcertadas, $letrasFalladas)
-{
-    $letraIntroducida = !(array_search($letra, $letrasAcertadas)==false && array_search($letra, $letrasFalladas)==false);  
+
+function EstaLetraEnIntroducidas($letra, $letrasAcertadas, $letrasFalladas) {
+    $letraIntroducida = !(array_search($letra, $letrasAcertadas) == false && array_search($letra, $letrasFalladas) == false);
     return $letraIntroducida;
 }
 
-function ComprobarPalabraAcertada($palabra, $letrasAcertadas)
-{
-    $letraIntroducida=true;
-    for ($i = 0; $i < count($palabra); $i++) 
-    {   
-        if (array_search($palabra[$i], $letrasAcertadas)===false)
-        {
-            $letraIntroducida=false;
+function ComprobarPalabraAcertada($palabra, $letrasAcertadas) {
+    $esta = true;
+    for ($i = 0; $i < count($palabra); $i++) {
+        if (array_search($palabra[$i], $letrasAcertadas) === false) {
+            $esta = false;
             break;
         }
     }
-    return $letraIntroducida;
+    return $esta;
 }
 
-function ComprobarFinJuego($palabra, $letrasFalladas, $letrasAcertadas)
-{
-    $letraIntroducidaTodaLaPalabraAcertada=ComprobarPalabraAcertada($palabra, $letrasAcertadas);
-    $finDeJuego=false;
-    if($letraIntroducidaTodaLaPalabraAcertada===true && count($letrasFalladas)<4)
-    {
-        $finDeJuego=true;
+function ComprobarFinJuego($palabra, $letrasAcertadas, $letrasFalladas) {
+    $seHanIntroducidoTodasLasLetrasDeLaPalabra = ComprobarPalabraAcertada($palabra, $letrasAcertadas);
+    $finDeJuego = false;
+    // El número de letras falladas será un parámetro más adelante.
+    if ($seHanIntroducidoTodasLasLetrasDeLaPalabra === true && count($letrasFalladas) < 4) {
+        $finDeJuego = true;
         echo "Has ganado";
-    }
-    elseif (count($letrasFalladas)>4)
-    {
-        $palabrafinal= implode($palabra);
-        $finDeJuego=true;
+    } elseif (count($letrasFalladas) > 4) {
+        $palabrafinal = implode($palabra);
+        $finDeJuego = true;
         echo "Has perdido, has llegado al máximo de fallos, la palabra era $palabrafinal";
     }
-
     return $finDeJuego;
 }
 
-function MostrarFormulario()
-{
+function MostrarFormulario() {
     ?>
-        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
-        Introduce una letra: <input name="letra" value="" type="text"><br />
+    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
+        Introduce una letra en mayúsculas: <input name="letra" value="" type="text"><br />
         <input name="aceptar" value="Aceptar" type="submit">
-        </form>
+    </form>
     <?php
 }
 
+// Está función debería dividirse en varias para que 
+// no sea muy larga y pueda ser modificada por varios
+// cuando esté el código de Luís.
 function MuestraEstadoDelJuego(
-                    $definicion, $imagen, $palabra, 
-                    $letrasAcertadas, $letrasFalladas,
-                    $mensajeParaUsuario)
-{
-    $MaxNumFallos = 4;                
-    
-    if ($mensajeParaUsuario != "")
-    {
+$definicion, $imagen, $palabra, $letrasAcertadas, $letrasFalladas, $mensajeParaUsuario) {
+    $MaxNumFallos = 4;
+
+    if ($mensajeParaUsuario != "") {
         echo "<p>$mensajeParaUsuario</p>";
     }
-    
+
     echo "Definicion: $definicion <br />";
     echo "Imagen: $imagen <br />";
     echo "Palabra: ";
-    for ($index=0; $index < count($palabra); $index++)
-    {
-        $_GET['letra']=$palabra[$index];
-        if (array_search($_GET['letra'], $letrasAcertadas)===false)
-        {
+    for ($index = 0; $index < count($palabra); $index++) {
+        $letra = $palabra[$index]; // Aquí la variable letra es temporal. No puedo usar la de sesión.
+        if (array_search($letra, $letrasAcertadas) === false) {
             echo "_ ";
-        }
-        else
-        {
-            echo $_GET['letra']." ";
+        } else {
+            echo $letra." ";
         }
     }
     echo "<br />";
     echo "Falladas: ";
-    for ($index = 0; $index < count($letrasFalladas); $index++) 
-    {
-        $_GET['letra']=$letrasFalladas[$index];
-        echo "{$_GET['letra']}, ";
+    for ($index = 0; $index < count($letrasFalladas); $index++) {
+        $letra = $letrasFalladas[$index];
+        echo "{$letra}, ";
     }
     echo "<br />";
-   MostrarFormulario();  
+    MostrarFormulario();
+    
+    // Falta mostrar la imagen con los fallos. Aquí irá una función.
 }
 
-function EstableceDatosPartida()
-{
+function EstableceDatosPartida() {
     $palabras = array(
-                    "uno", 
-                    "dos", 
-                    "tres", 
-                    "cuatro");
+        "UNO",
+        "DOS",
+        "TRES",
+        "CUATRO");
     $definiciones = array(
-                    "definicion uno", 
-                    "definicion dos", 
-                    "definicion tres", 
-                    "definicion cuatro");
+        "definicion uno",
+        "definicion dos",
+        "definicion tres",
+        "definicion cuatro");
     $imagenes = array(
-                    "./imagenes/uno.png", 
-                    "./imagenes/dos.png", 
-                    "./imagenes/tres.png", 
-                    "./imagenes/cuatro.png");
-    
-    $indiceAleatorioPalabras = rand(0, count($palabras)-1);
+        "./imagenes/uno.png",
+        "./imagenes/dos.png",
+        "./imagenes/tres.png",
+        "./imagenes/cuatro.png");
+
+    $indiceAleatorioPalabras = rand(0, count($palabras) - 1);
     $_SESSION['definicion'] = $definiciones[$indiceAleatorioPalabras];
     $_SESSION['palabra'] = str_split($palabras[$indiceAleatorioPalabras]);
-    $_SESSION['imagen'] = $imagenes[$indiceAleatorioPalabras];    
+    $_SESSION['imagen'] = $imagenes[$indiceAleatorioPalabras];
     $_SESSION['acertadas'] = array();
     $_SESSION['falladas'] = array();
     $_SESSION['jugando'] = true;
 }
 
-function Principal()
-{
-    session_start();    
-    if (isset($_SESSION['jugando']) === false)
-    {
+// En principal todas las variables son las de la sesión
+// y en los módulos hacia abajo es donde uso las que se pasan
+// como parámetro.
+function Principal() {
+    session_start();
+    if (isset($_SESSION['jugando']) === false) {
         EstableceDatosPartida();
         $mensajeParaUsuario = "";
-    }
-    else
-    {
-        if ($_GET['letra'] = "")
-        {
+    } else {
+        $_GET['letra'] = strtoupper($_GET['letra']);
+        if ($_GET['letra'] == "") { // = Asignación, == Comparación
             $mensajeParaUsuario = "No has introducido nada :(";
-        }
-        else
-        {
+        } else {
             $letraIntroducida = EstaLetraEnIntroducidas($_GET['letra'], $_SESSION['acertadas'], $_SESSION['falladas']);
-            if ($letraIntroducida === true)
-            {
+            if ($letraIntroducida === true) {
                 $mensajeParaUsuario = "Esta letra ya está introducida";
-            }
-            else
-            {
+            } else {
                 $mensajeParaUsuario = "";
-                if (array_search($_GET['letra'], $_SESSION['palabra']) !== false)
-                {
-                    $letrasAcertadas[] = $_GET['letra'];
-                }
-                else
-                {
-                    $letrasFalladas[] = $_GET['letra'];
+                if (array_search($_GET['letra'], $_SESSION['palabra']) !== false) {
+                    $_SESSION['acertadas'][] = $_GET['letra'];
+                } else {
+                    $_SESSION['falladas'][] = $_GET['letra'];
                 }
             }
-            
-    ComprobarFinJuego($palabra, $letrasFalladas, $letrasAcertadas);
-            
+
+            if (ComprobarFinJuego($_SESSION['palabra'], $_SESSION['acertadas'], $_SESSION['falladas']) === true)
+            {
+                $mensajeParaUsuario = "El juego ha terminado."; // Pero no sé si he ganado o he perdido.
+            }
         }
-        /*
-        
- 
-         *     Si el juego a terminado
-         *          Tengo que saberlo para ver que muestro (Pantalla de has perdido o de has ganado).     
-         *     Si no
-                
-         */
-        $mensajeParaUsuario = "Lo que le digo al usuario tras haber procesado la entrada.";
     }
-    
+
     MuestraEstadoDelJuego(
-                    $_SESSION['definicion'], $_SESSION['imagen'], 
-                    $_SESSION['palabra'], $_SESSION['acertadas'], 
-                    $_SESSION['falladas'], $mensajeParaUsuario);    
+            $_SESSION['definicion'], $_SESSION['imagen'], $_SESSION['palabra'], $_SESSION['acertadas'], $_SESSION['falladas'], $mensajeParaUsuario);
 }
 ?>
 
 <!DOCTYPE>
 <html>
-<head></head>
-<body>
-    <?php 
-    Principal(); 
-    ?>
-</body>
+    <head></head>
+    <body>
+<?php
+Principal();
+?>
+    </body>
 </html>
