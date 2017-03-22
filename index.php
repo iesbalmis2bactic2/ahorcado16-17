@@ -1,27 +1,20 @@
 <?php
 function EstaLetraEnIntroducidas($letra, $letrasAcertadas,$letrasFalladas)
 {
-    if (array_search($letra, $letrasAcertadas)==false  && 
-        array_search($letra, $letrasFalladas)==false)
+    if (array_search($GET_['letra'], $letrasAcertadas)==false  && 
+        array_search($GET_['letra'], $letrasFalladas)==false)
         $esta=false;
     else
         $esta=true;
    
     return $esta;
 }
-
-function PedirLetra( $letrasAcertadas, $letrasFalladas)
-{
-    do
-    {
-        $letra=  strtoupper($letra);
-        $esta= EstaLetraEnIntroducidas($letra, $letrasAcertadas, $letrasFalladas);
-    }
-    while($esta==true);
-    
+function pedirLetra($letrasAcertadas, $letrasFalladas){
+        echo "<br/>Introduce una letra: ";
+        $letra = strtoupper($letraIntroducida);
+        $esta = EstaLetraEnIntroducidas($letra, $letrasAcertadas, $letrasFalladas);
     return $letra;
 }
-
 function ComprobarPalabraAcertada($palabra, $letrasAcertadas)
 {
     $esta=true;
@@ -36,16 +29,16 @@ function ComprobarPalabraAcertada($palabra, $letrasAcertadas)
     return $esta;
 }
 
-function ComprobarFinJuego($palabra, $letrasFalladas, $letrasAcertadas, $MaxNumFallos)
+function ComprobarFinJuego($palabra, $letrasFalladas, $letrasAcertadas)
 {
     $estaTodaLaPalabraAcertada=ComprobarPalabraAcertada($palabra, $letrasAcertadas);
     $finDeJuego=false;
-    if($estaTodaLaPalabraAcertada===true && count($letrasFalladas)<$MaxNumFallos)
+    if($estaTodaLaPalabraAcertada===true && count($letrasFalladas)<4)
     {
         $finDeJuego=true;
         echo "Has ganado";
     }
-    elseif (count($letrasFalladas)>$MaxNumFallos)
+    elseif (count($letrasFalladas)>4)
     {
         $palabrafinal= implode($palabra);
         $finDeJuego=true;
@@ -65,39 +58,45 @@ function MostrarFormulario()
     <?php
 }
 
-function MuestraEstadoDelJuego($definicion, $imagen, $palabra, $letrasAcertadas, $letrasFalladas)
+function MuestraEstadoDelJuego(
+                    $definicion, $imagen, $palabra, 
+                    $letrasAcertadas, $letrasFalladas,
+                    $mensajeParaUsuario)
 {
+    $MaxNumFallos = 4;                
+    
+    if ($mensajeParaUsuario != "")
+    {
+        echo "<p>$mensajeParaUsuario</p>";
+    }
+    
     echo "Definicion: $definicion <br />";
     echo "Imagen: $imagen <br />";
     echo "Palabra: ";
     for ($index=0; $index < count($palabra); $index++)
     {
-        $letra=$palabra[$index];
-        if (array_search($letra, $letrasAcertadas)===false)
+        $_GET['letra']=$palabra[$index];
+        if (array_search($_GET['letra'], $letrasAcertadas)===false)
         {
             echo "_ ";
         }
         else
         {
-            echo $letra." ";
+            echo $_GET['letra']." ";
         }
     }
     echo "<br />";
     echo "Falladas: ";
     for ($index = 0; $index < count($letrasFalladas); $index++) 
     {
-        $letra=$letrasFalladas[$index];
-        echo "$letra, ";
+        $_GET['letra']=$letrasFalladas[$index];
+        echo "{$_GET['letra']}, ";
     }
     echo "<br />";
+   MostrarFormulario();  
 }
 
-function Jugar($definicion, $imagen, $palabra, $letrasAcertadas, $letrasFalladas)
-{
-    $MaxNumFallos = 4;                
-    MuestraEstadoDelJuego($definicion, $imagen, $palabra, $letrasAcertadas, $letrasFalladas);
-    MostrarFormulario();    
-}
+
 
 function EstableceDatosPartida()
 {
@@ -130,29 +129,54 @@ function Principal()
 {
     session_start();    
     if (isset($_SESSION['jugando']) === false)
+    {
         EstableceDatosPartida();
+        $mensajeParaUsuario = "";
+    }
     else
     {
+        if ($_GET['letra'] = "")
+        {
+            $mensajeParaUsuario = "No has introducido nada :(";
+        }
+        else
+        {
+            $esta = EstaLetraEnIntroducidas($letra, $letrasAcertadas,$letrasFalladas);
+            if ($esta===true)
+            {
+                $mensajeParaUsuario= "Esta letra ya está introducida";
+            }
+            else
+            {
+                $mensajeParaUsuario = "";
+                if (array_search($_GET['letra'], $palabra) !== false)
+                {
+                    $letrasAcertadas[] = $_GET['letra'];
+                }
+                else
+                {
+                   $letrasFalladas[] = $_GET['letra'];
+                }
+            }
+            
+    ComprobarFinJuego($palabra, $letrasFalladas, $letrasAcertadas);
+            
+        }
         /*
-            No es la primera vez que se carga la página.
-            Tendré que:
+        
+ 
          *     Si el juego a terminado
          *          Tengo que saberlo para ver que muestro (Pantalla de has perdido o de has ganado).     
          *     Si no
-         *          Tomar la letra del edit y si no hay mensaje aopropiado.
-         *          Si es una letra válida
-         *              Ver si está en acertadas o falladas.
-         *          sino
-         *              mensaje apropiado
                 
          */
         $mensajeParaUsuario = "Lo que le digo al usuario tras haber procesado la entrada.";
     }
     
-    Jugar(
+    MuestraEstadoDelJuego(
         $_SESSION['definicion'], $_SESSION['imagen'], 
         $_SESSION['palabra'], $_SESSION['acertadas'], 
-        $_SESSION['falladas']);    
+        $_SESSION['falladas'], $mensajeParaUsuario);    
 }
 ?>
 
@@ -160,6 +184,8 @@ function Principal()
 <html>
 <head></head>
 <body>
-    <?php Principal(); ?>
+    <?php 
+    Principal(); 
+    ?>
 </body>
 </html>
