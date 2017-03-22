@@ -1,5 +1,34 @@
 <?php
 
+/* CONFIGURACION GLOBAL DE GIT
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = juanjobalmis
+[user]
+	email = juanjo@iesdoctorbalmis.com
+
+ */
+
+/* CONFIGURACION LOCAL DE GIT
+[pack]
+	buildbitmaps = false
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	logallrefupdates = true
+	bare = false
+[remote "origin"]
+	url = https://juanjobalmis@github.com/juanjobalmis/ahorcado
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+ */
+
 function EstaLetraEnIntroducidas($letra, $letrasAcertadas, $letrasFalladas) {
     $letraIntroducida = !(array_search($letra, $letrasAcertadas) == false && array_search($letra, $letrasFalladas) == false);
     return $letraIntroducida;
