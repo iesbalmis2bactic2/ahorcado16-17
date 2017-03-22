@@ -1,39 +1,29 @@
 <?php
-function EstaLetraEnIntroducidas($letra, $letrasAcertadas,$letrasFalladas)
+function EstaLetraEnIntroducidas($letra, $letrasAcertadas, $letrasFalladas)
 {
-    if (array_search($GET_['letra'], $letrasAcertadas)==false  && 
-        array_search($GET_['letra'], $letrasFalladas)==false)
-        $esta=false;
-    else
-        $esta=true;
-   
-    return $esta;
+    $letraIntroducida = !(array_search($letra, $letrasAcertadas)==false && array_search($letra, $letrasFalladas)==false);  
+    return $letraIntroducida;
 }
-function pedirLetra($letrasAcertadas, $letrasFalladas){
-        echo "<br/>Introduce una letra: ";
-        $letra = strtoupper($letraIntroducida);
-        $esta = EstaLetraEnIntroducidas($letra, $letrasAcertadas, $letrasFalladas);
-    return $letra;
-}
+
 function ComprobarPalabraAcertada($palabra, $letrasAcertadas)
 {
-    $esta=true;
+    $letraIntroducida=true;
     for ($i = 0; $i < count($palabra); $i++) 
     {   
         if (array_search($palabra[$i], $letrasAcertadas)===false)
         {
-            $esta=false;
+            $letraIntroducida=false;
             break;
         }
     }
-    return $esta;
+    return $letraIntroducida;
 }
 
 function ComprobarFinJuego($palabra, $letrasFalladas, $letrasAcertadas)
 {
-    $estaTodaLaPalabraAcertada=ComprobarPalabraAcertada($palabra, $letrasAcertadas);
+    $letraIntroducidaTodaLaPalabraAcertada=ComprobarPalabraAcertada($palabra, $letrasAcertadas);
     $finDeJuego=false;
-    if($estaTodaLaPalabraAcertada===true && count($letrasFalladas)<4)
+    if($letraIntroducidaTodaLaPalabraAcertada===true && count($letrasFalladas)<4)
     {
         $finDeJuego=true;
         echo "Has ganado";
@@ -96,8 +86,6 @@ function MuestraEstadoDelJuego(
    MostrarFormulario();  
 }
 
-
-
 function EstableceDatosPartida()
 {
     $palabras = array(
@@ -118,7 +106,7 @@ function EstableceDatosPartida()
     
     $indiceAleatorioPalabras = rand(0, count($palabras)-1);
     $_SESSION['definicion'] = $definiciones[$indiceAleatorioPalabras];
-    $_SESSION['palabra'] = $palabras[$indiceAleatorioPalabras];
+    $_SESSION['palabra'] = str_split($palabras[$indiceAleatorioPalabras]);
     $_SESSION['imagen'] = $imagenes[$indiceAleatorioPalabras];    
     $_SESSION['acertadas'] = array();
     $_SESSION['falladas'] = array();
@@ -141,21 +129,21 @@ function Principal()
         }
         else
         {
-            $esta = EstaLetraEnIntroducidas($letra, $letrasAcertadas,$letrasFalladas);
-            if ($esta===true)
+            $letraIntroducida = EstaLetraEnIntroducidas($_GET['letra'], $_SESSION['acertadas'], $_SESSION['falladas']);
+            if ($letraIntroducida === true)
             {
-                $mensajeParaUsuario= "Esta letra ya está introducida";
+                $mensajeParaUsuario = "Esta letra ya está introducida";
             }
             else
             {
                 $mensajeParaUsuario = "";
-                if (array_search($_GET['letra'], $palabra) !== false)
+                if (array_search($_GET['letra'], $_SESSION['palabra']) !== false)
                 {
                     $letrasAcertadas[] = $_GET['letra'];
                 }
                 else
                 {
-                   $letrasFalladas[] = $_GET['letra'];
+                    $letrasFalladas[] = $_GET['letra'];
                 }
             }
             
@@ -174,10 +162,10 @@ function Principal()
     }
     
     MuestraEstadoDelJuego(
-        $_SESSION['definicion'], $_SESSION['imagen'], 
-        $_SESSION['palabra'], $_SESSION['acertadas'], 
-        $_SESSION['falladas'], $mensajeParaUsuario);    
-}//Hola so Juan
+                    $_SESSION['definicion'], $_SESSION['imagen'], 
+                    $_SESSION['palabra'], $_SESSION['acertadas'], 
+                    $_SESSION['falladas'], $mensajeParaUsuario);    
+}
 ?>
 
 <!DOCTYPE>
