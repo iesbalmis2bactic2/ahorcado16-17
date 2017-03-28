@@ -43,6 +43,23 @@ function MostrarFormulario() {
 // Está función debería dividirse en varias para que 
 // no sea muy larga y pueda ser modificada por varios
 // cuando esté el código de Luís.
+function MuestraImagenesFallos($letrasFalladas)
+{
+ $imagenesFallos= array(
+        "./imagenFallo/uno.png",
+        "./imagenFallo/dos.png",
+        "./imagenFallo/tres.png",
+        "./imagenFallo/cuatro.png",
+        "./imagenFallo/cinco.png",
+        "./imagenFallo/seis.png");
+ 
+ $imagenFallo=$imagenesFallos[count($imagenesFallos)-1];
+ 
+ return $imagenFallo;
+ 
+}
+
+
 function MuestraEstadoDelJuego(
 $definicion, $imagen, $palabra, $letrasAcertadas, $letrasFalladas, $mensajeParaUsuario) {
     $MaxNumFallos = 6;
@@ -70,6 +87,9 @@ $definicion, $imagen, $palabra, $letrasAcertadas, $letrasFalladas, $mensajeParaU
     }
     echo "<br />";
     MostrarFormulario();
+    $imagenFallo=MuestraImagenesFallos($letrasFalladas);
+    
+    echo $imagenFallo;
     
     // Falta mostrar la imagen con los fallos. Aquí irá una función.
 }
