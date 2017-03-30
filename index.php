@@ -40,12 +40,11 @@ function MostrarFormulario() {
     <?php
 }
 
-// Está función debería dividirse en varias para que 
-// no sea muy larga y pueda ser modificada por varios
-// cuando esté el código de Luís.
 function MuestraImagenesFallos($letrasFalladas)
 {
+    $numero= count($letrasFalladas);
  $imagenesFallos= array(
+        "./imagenFallo/cero.png",
         "./imagenFallo/uno.png",
         "./imagenFallo/dos.png",
         "./imagenFallo/tres.png",
@@ -53,7 +52,7 @@ function MuestraImagenesFallos($letrasFalladas)
         "./imagenFallo/cinco.png",
         "./imagenFallo/seis.png");
  
- $imagenFallo=$imagenesFallos[count($imagenesFallos)-1];
+ $imagenFallo=$imagenesFallos[$numero];
  
  return $imagenFallo;
  
@@ -72,7 +71,7 @@ $definicion, $imagen, $palabra, $letrasAcertadas, $letrasFalladas, $mensajeParaU
     echo "Imagen: $imagen <br />";
     echo "Palabra: ";
     for ($index = 0; $index < count($palabra); $index++) {
-        $letra = $palabra[$index]; // Aquí la variable letra es temporal. No puedo usar la de sesión.
+        $letra = $palabra[$index];
         if (array_search($letra, $letrasAcertadas) === false) {
             echo "_ ";
         } else {
@@ -91,7 +90,6 @@ $definicion, $imagen, $palabra, $letrasAcertadas, $letrasFalladas, $mensajeParaU
     
     echo $imagenFallo;
     
-    // Falta mostrar la imagen con los fallos. Aquí irá una función.
 }
 
 function EstableceDatosPartida() {
