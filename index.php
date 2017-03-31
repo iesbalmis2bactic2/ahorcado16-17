@@ -26,7 +26,6 @@ function ComprobarFinJuego(
         $finDeJuego = true;
         $hasGanado=true;
     } elseif (count($letrasFalladas) > 5) {
-        $palabrafinal = implode($palabra);
         $finDeJuego = true;
     }
 }
@@ -156,12 +155,24 @@ function Principal() {
         if ($hasGanado == true)
         {
             echo "<p>Has Ganado</p>";
+            session_destroy();
+            ?>
+            <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
+            <input name="aceptar" value="Volver a jugar" type="submit">
+            </form>
+            <?php
         }
         else
         {
-            echo "<p>Has Perdido</p>";
+            $palabrafinal = implode($_SESSION['palabra']);
+            echo "<p>Has Perdido, la palabra era $palabrafinal</p>";
+            session_destroy();
+            ?>
+            <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
+            <input name="aceptar" value="Volver a jugar" type="submit">
+            </form>
+            <?php
         }
-        session_destroy();
     }
 }
 ?>
