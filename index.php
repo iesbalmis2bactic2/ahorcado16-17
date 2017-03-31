@@ -16,19 +16,19 @@ function ComprobarPalabraAcertada($palabra, $letrasAcertadas) {
     return $esta;
 }
 
-function ComprobarFinJuego($palabra, $letrasAcertadas, $letrasFalladas) {
+function ComprobarFinJuego(
+        $palabra, $letrasAcertadas, $letrasFalladas,
+        &$finDeJuego, &$hasGanado) {
     $seHanIntroducidoTodasLasLetrasDeLaPalabra = ComprobarPalabraAcertada($palabra, $letrasAcertadas);
-    $finDeJuego = false;
-    // El número de letras falladas será un parámetro más adelante.
+    $finDeJuego = false;    
+    $hasGanado = false;
     if ($seHanIntroducidoTodasLasLetrasDeLaPalabra === true && count($letrasFalladas) < 5) {
         $finDeJuego = true;
-        echo "Has ganado";
+        $hasGanado=true;
     } elseif (count($letrasFalladas) > 5) {
         $palabrafinal = implode($palabra);
         $finDeJuego = true;
-        echo "Has perdido, has llegado al máximo de fallos, la palabra era $palabrafinal";
     }
-    return $finDeJuego;
 }
 
 function MostrarFormulario() {
@@ -60,12 +60,8 @@ function MuestraImagenesFallos($letrasFalladas)
 
 
 function MuestraEstadoDelJuego(
-$definicion, $imagen, $palabra, $letrasAcertadas, $letrasFalladas, $mensajeParaUsuario) {
+$definicion, $imagen, $palabra, $letrasAcertadas, $letrasFalladas) {
     $MaxNumFallos = 6;
-
-    if ($mensajeParaUsuario != "") {
-        echo "<p>$mensajeParaUsuario</p>";
-    }
 
     echo "Definicion: $definicion <br />";
     echo "Imagen: $imagen <br />";
@@ -123,12 +119,14 @@ function EstableceDatosPartida() {
 // como parámetro.
 function Principal() {
     session_start();
+    $finDeJuego = false;
+    $hasGanado = false;
     if (isset($_SESSION['jugando']) === false) {
         EstableceDatosPartida();
         $mensajeParaUsuario = "";
     } else {
         $_GET['letra'] = strtoupper($_GET['letra']);
-        if ($_GET['letra'] == "") { // = Asignación, == Comparación
+        if ($_GET['letra'] == "") { 
             $mensajeParaUsuario = "No has introducido nada :(";
         } else {
             $letraIntroducida = EstaLetraEnIntroducidas($_GET['letra'], $_SESSION['acertadas'], $_SESSION['falladas']);
@@ -143,15 +141,28 @@ function Principal() {
                 }
             }
 
-            if (ComprobarFinJuego($_SESSION['palabra'], $_SESSION['acertadas'], $_SESSION['falladas']) === true)
-            {
-                $mensajeParaUsuario = "El juego ha terminado."; // Pero no sé si he ganado o he perdido.
-            }
+            ComprobarFinJuego(
+                 $_SESSION['palabra'], $_SESSION['acertadas'], $_SESSION['falladas'],
+                 $finDeJuego, $hasGanado);
         }
     }
 
-    MuestraEstadoDelJuego(
-            $_SESSION['definicion'], $_SESSION['imagen'], $_SESSION['palabra'], $_SESSION['acertadas'], $_SESSION['falladas'], $mensajeParaUsuario);
+    if ($finDeJuego == false)
+    {
+        MuestraEstadoDelJuego(
+        $_SESSION['definicion'], $_SESSION['imagen'], $_SESSION['palabra'], $_SESSION['acertadas'], $_SESSION['falladas']);
+    }
+    else {
+        if ($hasGanado == true)
+        {
+            echo "<p>Has Ganado</p>";
+        }
+        else
+        {
+            echo "<p>Has Perdido</p>";
+        }
+        session_destroy();
+    }
 }
 ?>
 
