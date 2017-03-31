@@ -57,9 +57,6 @@ function EstableceDatosPartida() {
     $_SESSION['jugando'] = true;
 }
 
-// En principal todas las variables son las de la sesión
-// y en los módulos hacia abajo es donde uso las que se pasan
-// como parámetro.
 function Principal() {
     session_start();
     $finDeJuego = false;
