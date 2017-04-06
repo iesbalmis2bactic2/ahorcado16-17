@@ -31,33 +31,6 @@ function ComprobarFinJuego(
     }
 }
 
-function MostrarFormulario() {
-    ?>
-    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
-        Introduce una letra en mayúsculas: <input name="letra" value="" type="text"><br />
-        <input name="aceptar" value="Aceptar" type="submit">
-    </form>
-    <?php
-}
-
-function MuestraImagenesFallos($letrasFalladas)
-{
-    $numero= count($letrasFalladas);
- $imagenesFallos= array(
-        "./imagenFallo/cero.png",
-        "./imagenFallo/uno.png",
-        "./imagenFallo/dos.png",
-        "./imagenFallo/tres.png",
-        "./imagenFallo/cuatro.png",
-        "./imagenFallo/cinco.png",
-        "./imagenFallo/seis.png");
- 
- $imagenFallo=$imagenesFallos[$numero];
- 
- return $imagenFallo;
- 
-}
-
 function EstableceDatosPartida() {
     $palabras = array(
         "UNO",
