@@ -1,22 +1,16 @@
-<?php
-
+<?php                     
 function MuestraImagenesFallos($letrasFalladas)
 {
-    $numero= count($letrasFalladas);
- $imagenesFallos= array(
-        "./imagenFallo/cero.png",
-        "./imagenFallo/uno.png",
-        "./imagenFallo/dos.png",
-        "./imagenFallo/tres.png",
-        "./imagenFallo/cuatro.png",
-        "./imagenFallo/cinco.png",
-        "./imagenFallo/seis.png");
- 
- $imagenFallo=$imagenesFallos[$numero];
- 
- return $imagenFallo;
- 
+?>
+ <div class="row filasNoLeft"> 
+    <div class="col-lg-12 col-md-12 col-sm-12 col-sg-12 columnas">    
+<?php 
+        $numero = count($letrasFalladas);
+        $rutaImagenFallo = "./imagenes/fallos/santi/s{$numero}.png";
+        echo '<img src="'.$rutaImagenFallo.'" />';
+?>
+    </div>
+ </div>
+<?php 
 }
-$imagenFallo=MuestraImagenesFallos($letrasFalladas);
-    
-    echo $imagenFallo;
+?>
