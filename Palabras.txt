@@ -1,12 +1,13 @@
 ﻿Palabras:
-1. -Reutilizar: De la regla de las 3 Rs ¿cual es la segunda?
-2. -Reducir: De la regla de las tres 3 Rs ¿cuál es la primera?
-3. -Reciclar: De la regla de las tres 3 Rs ¿cuál es la tercera?
-4. -Ecología: ¿cuál es Ciencia que estudia las relaciones entre los seres vivos y de éstos con el 
+1. -Reutilizar: De la regla de las 3 Rs, ¿cual es la segunda?
+2. -Reducir: De la regla de las tres 3 Rs, ¿cuál es la primera?
+3. -Reciclar: De la regla de las tres 3 Rs, ¿cuál es la tercera?
+4. -Ecología: ¿Cuál es Ciencia que estudia las relaciones entre los seres vivos y de éstos con el 
 medio físico-químico que les rodea?
-6. -Contaminación: ¿qué es alteración nociva de la naturaleza, como consecuencia de la 
+6. -Contaminación: ¿Qué es alteración nociva de la naturaleza, como consecuencia de la 
 descarga de residuos al medio ambiente?
-7. -Gris: ¿Qué color tiene el contenedor en el que se tiran los residuos orgánicos?
+7. -Gris: ¿Qué es alteración nociva de la naturaleza, como consecuencia de la 
+descarga de residuos al medio ambiente?
 8. -verde: ¿Qué color tiene el contenedor en el que se tira el vidrio?
 9. -amarillo: ¿Qué color tiene el contenedor en el que se tira el plástico, el tetrabrik y el papel 
 de aluminio?
