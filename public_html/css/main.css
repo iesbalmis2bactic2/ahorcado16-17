@@ -1,12 +1,64 @@
-a,a:hover {
+a, a:hover {
   text-decoration: none;
   color: white;
 }
-
+.filas{
+    background-color: white;
+    border:solid black ;
+    margin-top: 2px;
+     margin-bottom: 2px;
+    margin-right:1px;
+    margin-left:1px;
+}
+.columnas{
+    background-color: white;
+    border:solid green ;
+    
+ 
+}
+.filasNoLeft{
+    background-color: white;
+    border:solid black ;
+    margin-top: 2px;
+     margin-bottom: 2px; 
+    margin-right:1px;
+}
+.contorno{
+    background-color: white;
+    border:solid blue ;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  
+ 
+}
 #boton {
   margin-top: 400px;
 }
 
-#segundo:hover {
+
+#Ganaste{
+    margin-top:50px;
+    font-family: "Gigi";
+    font-size: 55px;
+     border-top-width: 5px;
+  border-right-width: 5px;
+  border-bottom-width: 5px;
+  border-left-width: 5px;
+  border-top-style: dashed;
+  border-right-style: dashed;
+  border-bottom-style: dashed;
+  border-left-style: dashed;
+  border-radius: 40%;
+  text-align: center;
+  
 }
+#imagenwin {
+  
+  margin-top: 100px;
+  margin-right:500px;
+}
+
+
+
+
 
