@@ -21,10 +21,9 @@ function MostrarPalabra($palabra, $letrasAcertadas)
              <div class="col-lg-1 col-md-1 col-sm-1 col-sg-1 columnas">
                 <?php echo $letra; ?>
              </div>
+ <?php
         }
     }
-    <?php
-    echo "<br />";
 ?>
 </div>
 <?php
