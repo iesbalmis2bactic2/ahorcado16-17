@@ -138,7 +138,9 @@ function Principal() {
 
 <!DOCTYPE>
 <html>
-    <head></head>
+    <head>
+        <meta charset="utf-8" />
+    </head>
     <body>
 <?php
 Principal();
