@@ -2,30 +2,26 @@ a, a:hover {
   text-decoration: none;
   color: white;
 }
+
 .filas{
     background-color: white;
-    border:solid black ;
-    margin-top: 2px;
-     margin-bottom: 2px;
-    margin-right:1px;
-    margin-left:1px;
+    border:outset activeborder 5px ;
+    margin-top: 5px;
+     margin-bottom: 5px;
+    margin-right:0.5px;
+    margin-left:0.5px;
+    border-radius:3%;
 }
 .columnas{
     background-color: white;
-    border:solid green ;
+    border:solid black 1px ;
+    border-radius:0%;
     
  
 }
-.filasNoLeft{
-    background-color: white;
-    border:solid black ;
-    margin-top: 2px;
-     margin-bottom: 2px; 
-    margin-right:1px;
-}
 .contorno{
     background-color: white;
-    border:solid blue ;
+    border:solid white ;
     padding-top: 5px;
     padding-bottom: 5px;
   
