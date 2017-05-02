@@ -2,7 +2,7 @@
 
 function MostrarFormulario() {
     ?>
-<div class="row filasNoLeft ">
+<div class="row filas ">
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">
         <div class="col-lg-3 col-md-3 col-sm-3 col-sg-3 columnas">
             ¡Juega!

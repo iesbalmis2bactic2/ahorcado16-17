@@ -2,7 +2,7 @@
 function MostrarPalabra($palabra, $letrasAcertadas)
 {
 ?>
-<div class="row filasNoLeft">
+<div class="row filas">
 <?php
     for ($index = 0; $index < count($palabra); $index++) 
     {    
