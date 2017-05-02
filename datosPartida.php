@@ -6,7 +6,6 @@ function EstableceDatosPartida() {
         "REDUCIR",
         "RECICLAR",
         "ECOLOGIA",
-        "CONTAMINACION",
         "GRIS",
         "VERDE",
         "AMARILLO",
@@ -20,8 +19,6 @@ function EstableceDatosPartida() {
             medio físico-químico que les rodea?",
         "¿Qué es alteración nociva de la naturaleza, como consecuencia de la 
             descarga de residuos al medio ambiente?",
-        "¿Qué es alteración nociva de la naturaleza, como consecuencia de la 
-            descarga de residuos al medio ambiente?",
         "¿Qué color tiene el contenedor en el que se tira el vidrio?",
         "¿Qué color tiene el contenedor en el que se tira el plástico, el tetrabrik y el papel 
             de aluminio?",
@@ -30,10 +27,15 @@ function EstableceDatosPartida() {
         "Degradación de la materia orgánica para formarla en un compuesto 
             químicamente estable.");
     $imagenes = array(
-        "./imagenes/uno.png",
-        "./imagenes/dos.png",
-        "./imagenes/tres.png",
-        "./imagenes/cuatro.png");
+        "./imagenes/adivinar/juanlu/reutilizar.jpg",
+        "./imagenes/adivinar/juanlu/reducir.jpg",
+        "./imagenes/adivinar/juanlu/reciclar.jpg",
+        "./imagenes/adivinar/juanlu/ecologia.jpg",
+        "./imagenes/adivinar/juanlu/contenedores.jpg",
+        "./imagenes/adivinar/juanlu/contenedores.jpg",
+        "./imagenes/adivinar/juanlu/contenedores.jpg",
+        "./imagenes/adivinar/juanlu/rsu.jpg",
+        "./imagenes/adivinar/juanlu/compost.jpg");
 
     $indiceAleatorioPalabras = rand(0, count($palabras) - 1);
     $_SESSION['definicion'] = $definiciones[$indiceAleatorioPalabras];
