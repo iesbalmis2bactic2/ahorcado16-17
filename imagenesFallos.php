@@ -7,7 +7,7 @@ function MuestraImagenesFallos($letrasFalladas)
 <?php 
         $numero = count($letrasFalladas) + 1;
         $rutaImagenFallo = "./imagenes/fallos/buenas/imag{$numero}.png";
-        echo '<img width="384px" height ="216px" src="'.$rutaImagenFallo.'" />';
+        echo '<img width ="360px" class="center-block" src="'.$rutaImagenFallo.'" />';
 ?>
     </div>
  </div>
