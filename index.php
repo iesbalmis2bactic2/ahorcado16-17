@@ -103,7 +103,7 @@ function Principal() {
 
         <script src="public_html/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
-    <body>
+    <body class="imgFondo">
 <?php
 Principal();
 ?>

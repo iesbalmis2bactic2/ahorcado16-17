@@ -3,9 +3,11 @@ a, a:hover {
   color: white;
 }
 .imgFondo{
-    background-image: url("../../imagenes/web/mainpage/fondofinaldegradado.png");
-   
-    background-size: cover ;   
+    background: url("../../imagenes/web/mainpage/fondofinaldegradado.png") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+     background-size: cover;
 }
 
 .filas{
@@ -25,8 +27,8 @@ a, a:hover {
  
 }
 .contorno{
-    background-color: white;
-    border:solid white ;
+    background-color: transparent;
+    border:solid transparent ;
     padding-top: 5px;
     padding-bottom: 5px;
   
