@@ -2,6 +2,11 @@ a, a:hover {
   text-decoration: none;
   color: white;
 }
+.imgFondo{
+    background-image: url("../../imagenes/web/mainpage/fondofinaldegradado.png");
+   
+    background-size: cover ;   
+}
 
 .filas{
     background-color: white;
