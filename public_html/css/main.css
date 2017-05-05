@@ -30,7 +30,16 @@ a, a:hover {
  
 }
 #boton {
-  margin-top: 400px;
+  margin-top: 120px;
+  margin-left: 110px;
+ background-color: black;
+ border-radius:70%;
+ font-size: 30px;
+ padding: 10px;
+}
+.a{
+    color: black;
+    text-decoration: black;
 }
 
 
@@ -50,10 +59,13 @@ a, a:hover {
   text-align: center;
   
 }
-#imagenwin {
-  
-  margin-top: 100px;
-  margin-right:500px;
+.imgGanar {
+  background: url("victoria.png") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+     background-size: cover;
+ 
 }
 
 
