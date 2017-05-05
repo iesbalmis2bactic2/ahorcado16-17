@@ -21,7 +21,9 @@ a, a:hover {
 }
 .contorno{
     background-color: white;
-    border:solid white ;
+    border:solid white;
+    background-color: transparent;
+    border:solid transparent ;
     padding-top: 5px;
     padding-bottom: 5px;
   

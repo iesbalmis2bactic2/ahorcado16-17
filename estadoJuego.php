@@ -9,8 +9,8 @@ function MuestraEstadoDelJuego(
 $definicion, $imagen, $palabra, $letrasAcertadas, $letrasFalladas) {
 
  ?>
-<div class="container">
-    <div class="row">
+<div class="container contorno ">
+    <div class="row  ">
 <?php
 
     $MaxNumFallos = 6;
