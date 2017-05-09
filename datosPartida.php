@@ -11,14 +11,14 @@ function EstableceDatosPartida() {
         "AMARILLO",
         "RESIDUO",
         "COMPOST");
+
     $definiciones = array(
         "De la regla de las 3 Rs, ¿cual es la segunda?",
         "De la regla de las tres 3 Rs, ¿cuál es la primera?",
         "De la regla de las tres 3 Rs, ¿cuál es la tercera?",
         "¿Cuál es Ciencia que estudia las relaciones entre los seres vivos y de éstos con el 
             medio físico-químico que les rodea?",
-        "¿Qué es alteración nociva de la naturaleza, como consecuencia de la 
-            descarga de residuos al medio ambiente?",
+        "¿Qué color tiene el contenedor en el que se tiran los rsu?",
         "¿Qué color tiene el contenedor en el que se tira el vidrio?",
         "¿Qué color tiene el contenedor en el que se tira el plástico, el tetrabrik y el papel 
             de aluminio?",
@@ -27,15 +27,15 @@ function EstableceDatosPartida() {
         "Degradación de la materia orgánica para formarla en un compuesto 
             químicamente estable.");
     $imagenes = array(
-        "./imagenes/adivinar/juanlu/reutilizar.jpg",
-        "./imagenes/adivinar/juanlu/reducir.jpg",
-        "./imagenes/adivinar/juanlu/reciclar.jpg",
-        "./imagenes/adivinar/juanlu/ecologia.jpg",
-        "./imagenes/adivinar/juanlu/contenedores.jpg",
-        "./imagenes/adivinar/juanlu/contenedores.jpg",
-        "./imagenes/adivinar/juanlu/contenedores.jpg",
-        "./imagenes/adivinar/juanlu/rsu.jpg",
-        "./imagenes/adivinar/juanlu/compost.jpg");
+        "./imagenes/imgJPG/reutilizar.jpg",
+        "./imagenes/imgJPG/reducir.jpg",
+        "./imagenes/imgJPG/reciclar.jpg",
+        "./imagenes/imgJPG/ecologia.jpg",
+        "./imagenes/imgJPG/contenedores.jpg",
+        "./imagenes/imgJPG/contenedores.jpg",
+        "./imagenes/imgJPG/contenedores.jpg",
+        "./imagenes/imgJPG/rsu.jpg",
+        "./imagenes/imgJPG/compost.jpg");
 
     $indiceAleatorioPalabras = rand(0, count($palabras) - 1);
     $_SESSION['definicion'] = $definiciones[$indiceAleatorioPalabras];
