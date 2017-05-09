@@ -10,7 +10,7 @@ function MostrarPalabra($palabra, $letrasAcertadas)
         if (array_search($letra, $letrasAcertadas) === false) 
         {                
 ?>
-             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 columnas">
+             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 letra texto">
 <?php 
             echo "_"; 
 ?>
@@ -18,7 +18,7 @@ function MostrarPalabra($palabra, $letrasAcertadas)
 <?php
         } else {
 ?>
-             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 columnas">
+             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 letra texto">
                 <?php echo $letra; ?>
              </div>
  <?php

@@ -30,7 +30,7 @@ function EstableceDatosPartida() {
         "./imagenes/imgJPG/reutilizar.jpg",
         "./imagenes/imgJPG/reducir.jpg",
         "./imagenes/imgJPG/reciclar.jpg",
-        "./imagenes/imgJPG/ecologia.jpg",
+        "./imagenes/imgJPG/ecologia.jpg", // NO ESTA LA IMAGEN.
         "./imagenes/imgJPG/contenedores.jpg",
         "./imagenes/imgJPG/contenedores.jpg",
         "./imagenes/imgJPG/contenedores.jpg",
