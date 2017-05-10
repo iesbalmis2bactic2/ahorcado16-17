@@ -36,7 +36,15 @@ a, a:hover {
   
  
 }
-
+#boton2 {
+    margin-top: 100px;
+    margin-left: 60px;
+    background-color: black;
+    font-family: "Stencil";
+    border-radius:40%;
+    font-size: 30px;
+    padding: 10px;
+}
 #boton {
     margin-top: 197px;
     margin-left: 60px;
@@ -54,13 +62,15 @@ a, a:hover {
 
 #Ganaste{
     margin-top:50px;
+    color: green;
     font-family: "Gigi";
     font-size: 55px;
+    border-color: green;
      border-top-width: 5px;
     border-right-width: 5px;
     border-bottom-width: 5px;
     border-left-width: 5px;
-    border-top-style: dashed;
+    border-top-style: dashed ;
     border-right-style: dashed;
     border-bottom-style: dashed;
     border-left-style: dashed;
@@ -91,6 +101,32 @@ a, a:hover {
       -moz-background-size: cover;
       -o-background-size: cover;
        background-size: cover;
+}
+.imgFondoPerder { 
+    background: url("../../imagenes/fallos/buenas/imag6.png") no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+       background-size: cover;
+       background-color:#dff0d8;
+}
+#Perdiste{
+    margin-top:50px;
+    font-family: "Stencil";
+    font-size: 40px;
+    color: red;
+    border-color: red;
+     border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    border-top-style: dashed;
+    border-right-style: dashed;
+    border-bottom-style: dashed;
+    border-left-style: dashed;
+    border-radius: 30%;
+    text-align: center;
+    background-color: white;  
 }
 
 
