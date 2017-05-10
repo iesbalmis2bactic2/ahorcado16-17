@@ -4,13 +4,13 @@ function gestionaFinDeJuego($hasGanado)
         if ($hasGanado == true)
         {
             echo "<p>Has Ganado</p>";
-            session_destroy();
+            $_SESSION['jugando'] = false;      
         }
         else
         {
             $palabrafinal = implode($_SESSION['palabra']);
             echo "<p>Has Perdido, la palabra era $palabrafinal</p>";
-            session_destroy();
+            $_SESSION['jugando'] = false;      
         }
 ?>
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="get">

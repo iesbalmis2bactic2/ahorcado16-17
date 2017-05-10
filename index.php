@@ -35,12 +35,18 @@ function ComprobarFinJuego(
 
 function Principal() {
     session_start();
-    $finDeJuego = false;
-    $hasGanado = false;
     if (isset($_SESSION['jugando']) === false) {
+        InicializaDatosJuego();        
+    }
+    elseif ($_SESSION['jugando'] === false) {
         EstableceDatosPartida();
         $mensajeParaUsuario = "";
-    } elseif (isset($_GET['letra']) === true) {
+        $_SESSION['jugando'] = true;        
+    }
+    
+    $finDeJuego = false;
+    $hasGanado = false;
+    if (isset($_GET['letra']) === true) {
         $_GET['letra'] = strtoupper($_GET['letra']);
         if ($_GET['letra'] == "") { 
             $mensajeParaUsuario = "No has introducido nada :(";

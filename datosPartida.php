@@ -1,7 +1,7 @@
 <?php
 
-function EstableceDatosPartida() {
-    $palabras = array(
+function InicializaDatosJuego() {
+    $_SESSION['palabras'] = array(
         "REUTILIZAR",
         "REDUCIR",
         "RECICLAR",
@@ -12,7 +12,7 @@ function EstableceDatosPartida() {
         "RESIDUO",
         "COMPOST");
 
-    $definiciones = array(
+    $_SESSION['definiciones'] = array(
         "De la regla de las 3 Rs, ¿cual es la segunda?",
         "De la regla de las tres 3 Rs, ¿cuál es la primera?",
         "De la regla de las tres 3 Rs, ¿cuál es la tercera?",
@@ -26,7 +26,7 @@ function EstableceDatosPartida() {
             limpieza, cuando su poseedor o productor lo destina al abandono.",
         "Degradación de la materia orgánica para formarla en un compuesto 
             químicamente estable.");
-    $imagenes = array(
+    $_SESSION['imagenes'] = array(
         "./imagenes/imgJPG/reutilizar.jpg",
         "./imagenes/imgJPG/reducir.jpg",
         "./imagenes/imgJPG/reciclar.jpg",
@@ -36,12 +36,15 @@ function EstableceDatosPartida() {
         "./imagenes/imgJPG/contenedores.jpg",
         "./imagenes/imgJPG/rsu.jpg",
         "./imagenes/imgJPG/compost.jpg");
+    
+     $_SESSION['jugando'] = false;
+}
 
-    $indiceAleatorioPalabras = rand(0, count($palabras) - 1);
-    $_SESSION['definicion'] = $definiciones[$indiceAleatorioPalabras];
-    $_SESSION['palabra'] = str_split($palabras[$indiceAleatorioPalabras]);
-    $_SESSION['imagen'] = $imagenes[$indiceAleatorioPalabras];
+function EstableceDatosPartida() {
+    $indiceAleatorioPalabras = rand(0, count($_SESSION['palabras']) - 1);
+    $_SESSION['definicion'] = $_SESSION['definiciones'][$indiceAleatorioPalabras];
+    $_SESSION['palabra'] = str_split($_SESSION['palabras'][$indiceAleatorioPalabras]);
+    $_SESSION['imagen'] = $_SESSION['imagenes'][$indiceAleatorioPalabras];
     $_SESSION['acertadas'] = array();
     $_SESSION['falladas'] = array();
-    $_SESSION['jugando'] = true;
 }
