@@ -55,6 +55,15 @@ a, a:hover {
     padding: 10px;
 }
 
+#boton3 {
+    margin-top: 197px;
+    margin-left: 60px;
+    font-family: "Gigi";
+    border-radius:40%;
+    font-size: 40px;
+    padding: 10px;
+}
+
 .a{
     color: black;
     text-decoration: black;
@@ -96,7 +105,7 @@ a, a:hover {
  }
  
 .imagenfondo{
-    background: url("../../imagenes/web/mainpage/primera pagina playa web/drawing.png") no-repeat center center fixed; 
+    background: url("../../imagenes/web/mainpage/imagen fondo web.png") no-repeat center center fixed; 
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
