@@ -1,7 +1,7 @@
 <?php
 include 'definition.php';
 include 'formularioEentradaLetra.php';
-include 'ImagenesFallos.php';
+include 'imagenesFallos.php';
 include 'palabra.php';
 include 'fallos.php';
 
